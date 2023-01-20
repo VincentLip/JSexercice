@@ -66,77 +66,56 @@ btnPoint.addEventListener('click', ()=> {
     }
 })
 
+function affichage(arg){
+
+    affichageResultat.value = arg ;
+    affichageOperation.value += arg;
+    resultat = affichageOperation.value 
+}
+
 document.addEventListener('keydown', (event) => {
 
         if(event.key === "0"){
-            affichageResultat.value = 0 ;
-            affichageOperation.value += 0;
-            resultat = affichageOperation.value 
+            affichage(event.key);
             }
         if(event.key === "1"){
-            affichageResultat.value = 1 ;
-            affichageOperation.value += 1;
-            resultat = affichageOperation.value 
+            affichage(event.key);
             }
         if(event.key === "2"){
-            affichageResultat.value = 2 ;
-            affichageOperation.value += 2;
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "3"){
-            affichageResultat.value = 3 ;
-            affichageOperation.value += 3;
-            resultat = affichageOperation.value 
+            affichage(event.key);
             }
         if(event.key === "4"){
-            affichageResultat.value = 4 ;
-            affichageOperation.value += 4;
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "5"){
-            affichageResultat.value = 5 ;
-            affichageOperation.value += 5;
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "6"){
-            affichageResultat.value = 6 ;
-            affichageOperation.value += 6;
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "7"){
-            affichageResultat.value = 7 ;
-            affichageOperation.value += 7;
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "8"){
-            affichageResultat.value = 8 ;
-            affichageOperation.value += 8;
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "9"){
-            affichageResultat.value = 9 ;
-            affichageOperation.value += 9;
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "+"){
-            affichageResultat.value = "+" ;
-            affichageOperation.value += "+";
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "-"){
-            affichageResultat.value = "-" ;
-            affichageOperation.value += "-";
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "*"){
-            affichageResultat.value = "*" ;
-            affichageOperation.value += "*";
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "/"){
-            affichageResultat.value = "/" ;
-            affichageOperation.value += "/";
-            resultat = affichageOperation.value 
+            affichage(event.key); 
             }
         if(event.key === "Enter"){
             equal();
