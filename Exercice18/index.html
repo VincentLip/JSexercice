@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculatrice</title>
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Calculatrice</h1>
+                    <hr class="my-3">
+                    <div class="row">
+                        <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4" id="calculatrice">
+                            <div id="">
+                                <div class="my-3 p-3 bg-dark text-white rounded">
+                                    <h5 class="">Calculatrice</h5>
+                                    <hr>
+                                    <div class="my-3" id="Result">
+                                        <input class=" border border-hidden w-100" id="affichage-operation">
+                                        <input class=" border border-hidden w-100" id="affichage-resultat">
+
+
+                                    </div>
+                                    
+                                    <div class="my-1">
+                                        <button class="btn btn-outline-danger boutton" id="button-reset" >C</button>
+                                        <button class="btn btn-outline-light boutton-operator" id="button-open-parenth" >(</button>
+                                        <button class="btn btn-outline-light boutton-operator" id="button-close-parenth" >)</button>
+                                        <button class="btn btn-outline-light boutton-operator" id="button-divi" >/</button>
+                                    </div>
+                                    <div class="my-1">
+                                        <button class="btn btn-outline-light boutton-num" id="button-seven" >7</button>
+                                        <button class="btn btn-outline-light boutton-num" id="button-eight" >8</button>
+                                        <button class="btn btn-outline-light boutton-num" id="button-nine" >9</button>
+                                        <button class="btn btn-outline-light boutton-operator" id="button-mult" >*</button>
+                                    </div>
+                                    <div class="my-1">
+                                        <button class="btn btn-outline-light boutton-num" id="button-four" >4</button>
+                                        <button class="btn btn-outline-light boutton-num" id="button-five" >5</button>
+                                        <button class="btn btn-outline-light boutton-num" id="button-six" >6</button>
+                                        <button class="btn btn-outline-light boutton-operator" id="button-subt" >-</button>
+                                    </div>
+                                    <div class="my-1">
+                                        <button class="btn btn-outline-light boutton-num" id="button-one" >1</button>
+                                        <button class="btn btn-outline-light boutton-num" id="button-two" >2</button>
+                                        <button class="btn btn-outline-light boutton-num" id="button-three" >3</button>
+                                        <button class="btn btn-outline-light boutton-operator" id="button-add" >+</button>
+                                    </div>
+                                    <div class="my-1">
+                                        <button class="btn btn-outline-light boutton-num" id="button-zero" >0</button>
+                                        <button class="btn btn-outline-light boutton" id="button-point" >.</button>
+                                        <button class="btn btn-outline-secondary " id="button-equal" >=</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+<footer>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+        <script src="./main.js"></script>
+</body>
+
+</html>

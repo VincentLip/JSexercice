@@ -1,0 +1,18 @@
+.boutton, .boutton-num , .boutton-operator{
+
+    height: 50px;
+    width: 50px;
+
+}
+
+#button-equal {
+
+    height: 50px;
+    width: 104px;
+}
+
+#calculatrice{
+
+    height: 500px;
+    width: 275px;
+}
