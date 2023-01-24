@@ -34,6 +34,7 @@ const addGrade = document.querySelector('#add-grade');
 const addStudentBtn = document.querySelector('#add-student-btn');
 const addFieldBtn = document.querySelector('#add-field-btn');
 const addGradeBtn = document.querySelector('#add-grade-btn');
+const grade = document.querySelector('#grade')
 
 const gradeStudent = document.querySelector('#grade-student');
 const studentChoice = document.querySelector('#student-choice');
@@ -153,10 +154,16 @@ addFieldBtn.addEventListener("click", (event) => {
     event.preventDefault();
     let field = document.querySelector("#field").value;
     
+    if (!lessons.includes(field)) 
+    {
+        lessons.push(field);
+        
+    }
     for(let i =0 ; i< students.length ; i++){
 
         students[i].grades[field]=[]
     }
+    
     refreshStudent();
 
 })
@@ -165,7 +172,18 @@ addGradeBtn.addEventListener("click" , (event) => {
 
     event.preventDefault();
 
+    tempName = gradeStudent.value;
+    tempGrade = grade.value;
+    tempField = gradeField.value;
 
+    console.log(tempName)
+    console.log(tempGrade)
+    console.log(tempField)
+
+    students[tempName].grades[tempField]=[tempGrade]
+
+    console.log(students[tempName].grades[tempField])
+    console.log(students)
 
     refreshStudent();
 })
