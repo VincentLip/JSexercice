@@ -166,12 +166,14 @@ addGradeBtn.addEventListener("click" , (event) => {
 studentChoice.addEventListener('change', () => {
 
     refreshTableGrade();
+    refreshAverageGrade();
     
 })
 
 lessonFieldChoice.addEventListener("change", () => {
 
     refreshTableGrade();
+    refreshAverageGrade();
 
 })
 
@@ -244,5 +246,65 @@ const refreshTableGrade = () => {
     }
 
 };
+
+const averageGradeOutput = document.getElementById('average-grade');
+
+const calculateAverage = (grades) => {
+
+    let sum =0;
+    for(const grade of grades) sum += grade;
+    return (sum /grades.length).toFixed(1);
+}
+
+const refreshAverageGrade = () => {
+    let currentGrades = [];
+    if(studentChoice.value == 0 && lessonFieldChoice.value == 0) {
+        console.log("cas Toute la classe et toutes les matiéres")
+        for (const student of students) {
+            for (const lessonfield in student.grades) {
+                for (const grade of student.grades[lessonfield]) {
+                    currentGrades.push(grade);
+                    averageGradeOutput.innerHTML =`Moyenne générale de la classe : <b>${calculateAverage(currentGrades)}</b>`;
+                }
+            }
+        }
+        
+    
+    }else if(lessonFieldChoice.value == 0 ){
+
+        const student = students[studentChoice.value-1];
+        for (const lessonfield in student.grades) {
+            for (const grade of student.grades[lessonfield]) {
+                currentGrades.push(grade);
+                averageGradeOutput.innerHTML =`Moyenne générale de ${student.lastname} ${student.firstname} : <b>${calculateAverage(currentGrades)}</b>`;
+            }
+        }
+    
+    
+    }else if(studentChoice.value == 0){
+        const lessonfield = lessonFieldChoice.value;
+        let mat = lessons[lessonfield-1];
+        for (const student of students) {
+            for (const grade of student.grades[mat]) {
+                currentGrades.push(grade);
+                averageGradeOutput.innerHTML =`Moyenne en ${mat} de la classe : <b>${calculateAverage(currentGrades)}</b>`;
+
+            }
+        }
+        
+
+    }else {
+        const student = students[studentChoice.value-1];
+        const lessonfield = lessonFieldChoice.value;
+        let mat = lessons[lessonfield-1];
+
+        for (const grade of student.grades[mat]) {
+            currentGrades.push(grade);
+            averageGradeOutput.innerHTML=`Moyenne en ${lessonfield} de <b>${student.lastname} ${student.firstname}</b> : <b>${calculateAverage(currentGrades)}</b>`;
+        }
+    }
+        
+}
+
 
 refreshStudent();
