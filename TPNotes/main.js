@@ -3,7 +3,7 @@ let students = [
         lastname : "MARTIN",
         firstname : "Jean",
         grades : {
-            francais :[12,15,5],
+            français :[12,15,5],
             histoire :[8,13,2]
 
         }
@@ -13,7 +13,7 @@ let students = [
         lastname : "DUPOND",
         firstname : "Marc",
         grades : {
-            francais :[18,13,15],
+            français :[18,13,15],
             histoire :[8,5,9]
 
         }
@@ -34,7 +34,7 @@ const addGrade = document.querySelector('#add-grade');
 const addStudentBtn = document.querySelector('#add-student-btn');
 const addFieldBtn = document.querySelector('#add-field-btn');
 const addGradeBtn = document.querySelector('#add-grade-btn');
-const grade = document.querySelector('#grade')
+
 
 const gradeStudent = document.querySelector('#grade-student');
 const studentChoice = document.querySelector('#student-choice');
@@ -99,52 +99,36 @@ buttonGradeVisibility.addEventListener('click', ()=>{
 
 const refreshStudent = () => {
 
-    gradeStudent.innerHTML =`<option value="0">Sélectionnez un élève</option>`;
+    gradeStudent.innerHTML =`<option value='0'>Sélectionnez un élève</option>`;
+    studentChoice.innerHTML = `<option value='0'>Tous les élèves</option>`;
     for (let student of students)
     {
         gradeStudent.innerHTML += `<option value ="${students.indexOf(student)+1}">${student.lastname} ${student.firstname}</option>`;
-            
+        studentChoice.innerHTML += `<option value ="${students.indexOf(student)+1}">${student.lastname} ${student.firstname}</option>`;  
     };
 
     gradeField.innerHTML= `<option value='0'>Toutes les matières</option>`;
-    for(let lesson of lessons){
-            
-        gradeField.innerHTML += `<option value ="${lesson}">${lesson}</option>`;
-
-    }
-
-    studentChoice.innerHTML =`<option value="0">Sélectionnez un élève</option>`;
-    for (let student of students) {
-
-        studentChoice.innerHTML += `<option value ="${students.indexOf(student)+1}">${student.lastname} ${student.firstname}</option>`;
-    
-    };
-
     lessonFieldChoice.innerHTML= `<option value='0'>Toutes les matières</option>`;
     for(let lesson of lessons){
             
-        lessonFieldChoice.innerHTML += `<option value ="${lesson}">${lesson}</option>`;
-
+        gradeField.innerHTML += `<option value ="${lessons.indexOf(lesson)+1}">${lesson}</option>`;
+        lessonFieldChoice.innerHTML += `<option value ="${lessons.indexOf(lesson)+1}">${lesson}</option>`;
     }
 }
-
-studentChoice.addEventListener('change' , () => {
-
-    refreshStudent();
-})
-
 
 addStudentBtn.addEventListener("click", (event) => {
 
     event.preventDefault();
 
     
-    students.push({
+    const newStudent = {
 
         lastname : document.querySelector("#student-lastname").value,
         firstname : document.querySelector("#student-firstname").value,
         
-    })
+    }
+
+    students.push(newStudent);
     console.log(students);
     refreshStudent();
 })
@@ -172,28 +156,93 @@ addGradeBtn.addEventListener("click" , (event) => {
 
     event.preventDefault();
 
-    tempName = gradeStudent.value;
-    tempGrade = grade.value;
-    tempField = gradeField.value;
-
-    console.log(tempName)
-    console.log(tempGrade)
-    console.log(tempField)
-
-    students[tempName].grades[tempField]=[tempGrade]
-
-    console.log(students[tempName].grades[tempField])
-    console.log(students)
-
-    refreshStudent();
+    const tempStudent = students[gradeStudent.value-1];
+    const tempGrade = Number(document.querySelector('#grade').value);
+    const tempField = document.querySelector('#grade-field').value;
+    tempStudent.grades[lessons[tempField-1]].push(tempGrade)
+    
 })
+
+studentChoice.addEventListener('change', () => {
+
+    refreshTableGrade();
+    
+})
+
+lessonFieldChoice.addEventListener("change", () => {
+
+    refreshTableGrade();
+
+})
+
 
 
 const refreshTableGrade = () => {
 
-    tableGrade ="";
+    tableGrade.innerHTML ="";
 
-}
+    if(studentChoice.value == 0 && lessonFieldChoice.value == 0 ){
+
+        for (let student of students){
+            for(const lessonfield in student.grades){
+                for(const grade of student.grades[lessonfield]){
+
+                    tableGrade.innerHTML += 
+                    `<tr>
+                        <td>${student.lastname}</td>
+                        <td>${student.firstname}</td>
+                        <td>${lessonfield}</td>
+                        <td>${grade}</td>
+                    </tr>
+                    `
+                }
+            }
+        }
+    }else if(lessonFieldChoice.value == 0){
+
+        const student = students[studentChoice.value-1];
+        for (const lessonfield in student.grades) {
+            for (const grade of student.grades[lessonfield]) {
+                tableGrade.innerHTML +=
+                `<tr>
+                    <td>${student.lastname}</td>
+                    <td>${student.firstname}</td>
+                    <td>${lessonfield}</td>
+                    <td>${grade}</td>
+                </tr>`
+            }
+        }
+
+    }else if(studentChoice.value == 0){
+        const lessonfield = lessonFieldChoice.value;
+        let mat = lessons[lessonfield-1];
+        for (const student of students) {
+                for (const grade of student.grades[mat]) {
+                    tableGrade.innerHTML +=
+                    `<tr>
+                        <td>${student.lastname}</td>
+                        <td>${student.firstname}</td>
+                        <td>${mat}</td>
+                        <td>${grade}</td>
+                    </tr>`
+                }
+        }
+    }else{
+        const student = students[studentChoice.value-1];
+        const lessonfield = lessonFieldChoice.value;
+        let mat = lessons[lessonfield-1];
+
+        for (const grade of student.grades[mat]) {
+            tableGrade.innerHTML +=
+            `<tr>
+                <td>${student.lastname}</td>
+                <td>${student.firstname}</td>
+                <td>${mat}</td>
+                <td>${grade}</td>
+            </tr>`
+        }
+    }
+
+};
 
 refreshStudent();
-
