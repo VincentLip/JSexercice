@@ -125,9 +125,8 @@ addStudentBtn.addEventListener("click", (event) => {
 
         lastname : document.querySelector("#student-lastname").value,
         firstname : document.querySelector("#student-firstname").value,
-        
     }
-
+    
     students.push(newStudent);
     console.log(students);
     refreshStudent();
@@ -147,7 +146,7 @@ addFieldBtn.addEventListener("click", (event) => {
 
         students[i].grades[field]=[]
     }
-    
+    console.log(students);
     refreshStudent();
 
 })
@@ -300,7 +299,7 @@ const refreshAverageGrade = () => {
 
         for (const grade of student.grades[mat]) {
             currentGrades.push(grade);
-            averageGradeOutput.innerHTML=`Moyenne en ${lessonfield} de <b>${student.lastname} ${student.firstname}</b> : <b>${calculateAverage(currentGrades)}</b>`;
+            averageGradeOutput.innerHTML=`Moyenne en ${mat} de <b>${student.lastname} ${student.firstname}</b> : <b>${calculateAverage(currentGrades)}</b>`;
         }
     }
         
