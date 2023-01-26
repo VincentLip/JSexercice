@@ -9,7 +9,6 @@ class Car {
     affichage() {
 
         return `La voiture <b>${this.brand} ${this.model} </b> va à <b> ${this.speed}</b>km/h.<br>`
-
     }
 
     accelerate(){
