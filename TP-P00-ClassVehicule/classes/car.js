@@ -8,7 +8,12 @@ export default class Car extends Vehicle {
 
     display() {
 
-        return `<b> Voiture </b> : ${this.brand} - ${this.model} - ${this.mileage} km - ${this.year} - ${this.airconditionning}.<br>`
+        if(this.airconditionning){
+            return `<b> Voiture </b> : ${this.brand} - ${this.model} - ${this.mileage} km - ${this.year} - Climatisée.<br>`
+        }else {
+            return `<b> Voiture </b> : ${this.brand} - ${this.model} - ${this.mileage} km - ${this.year} - Non Climatisée.<br>`
+        }
+        
     }
 
 }
