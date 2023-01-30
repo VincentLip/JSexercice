@@ -13,6 +13,19 @@ const description = document.querySelector("#description");
 const stock = document.querySelector("#stock");
 const domain = document.querySelector("#domain");
 const addBtn = document.querySelector("#add-btn");
+const product = document.querySelector("#Product");
+const service = document.querySelector("#Service");
+
+
+product.addEventListener("click" , ()=> {
+    domain.classList.add('d-none')
+    stock.classList.remove('d-none')
+})
+service.addEventListener("click" , ()=> {
+    stock.classList.add('d-none')
+    domain.classList.remove('d-none')
+
+})
 
 addBtn.addEventListener("click", (event) => {
 
@@ -21,6 +34,8 @@ addBtn.addEventListener("click", (event) => {
 
         const newProduct = new Product (title.value,price.value,description.value,stock.value);
         resultProduct.innerHTML += newProduct.display();
+        domain.classList.add('d-none')
+
     }
     if(document.getElementById('Service').checked){
 
