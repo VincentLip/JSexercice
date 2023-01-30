@@ -24,7 +24,7 @@ export class Ihm {
         if(document.getElementById('Product').checked){
             const title = this.formulaire.querySelector("input[name='title']").value
             const price = this.formulaire.querySelector("input[name='price']").value
-            const description = this.formulaire.querySelector("input[name='description']").value
+            const description = this.formulaire.querySelector("textarea[name='description']").value
             const stock = this.formulaire.querySelector("input[name='stock']").value
             const product = new Product(title,price,description,stock)
             this.products.push(product)
@@ -33,7 +33,7 @@ export class Ihm {
         if(document.getElementById('Service').checked){
             const title = this.formulaire.querySelector("input[name='title']").value
             const price = this.formulaire.querySelector("input[name='price']").value
-            const description = this.formulaire.querySelector("input[name='description']").value
+            const description = this.formulaire.querySelector("textarea[name='description']").value
             const domain = this.formulaire.querySelector("input[name='domain']").value
             const service = new Service(title,price,description,domain)
             this.services.push(service)
