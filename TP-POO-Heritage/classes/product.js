@@ -7,13 +7,13 @@ export class Product extends Temp {
 
     }
 
-    display() {
+    // display() {
 
-        return `<tr>
-                    <td>${this.title}</td>
-                    <td>${this.price}</td>
-                    <td>${this.description}</td>
-                    <td>${this.stock}</td>
-                </tr>`
-    }
+    //     return `<tr>
+    //                 <td>${this.title}</td>
+    //                 <td>${this.price}</td>
+    //                 <td>${this.description}</td>
+    //                 <td>${this.stock}</td>
+    //             </tr>`
+    // }
 }
