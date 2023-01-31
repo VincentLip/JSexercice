@@ -12,6 +12,8 @@ let intTime, outTime
 let time = 0
 
 const cars =[];
+const tabMatriculation =[]
+
 
 
 getTicketBtn.addEventListener('click', (event)=>{
@@ -19,11 +21,20 @@ getTicketBtn.addEventListener('click', (event)=>{
     event.preventDefault();
     intTime = new Date();
     let car = new Car("","",inputMatriculation.value,intTime);
-    cars.push(car);
-    ticket.classList.remove("d-none");
-    ticket.innerHTML = `Veuillez prendre votre ticket pour le véhicule  ${inputMatriculation.value}.`
-    dissapear(ticket);
-
+    if (!tabMatriculation.includes(inputMatriculation.value)) 
+    {
+        cars.push(car);
+        tabMatriculation.push(inputMatriculation.value);
+        ticket.classList.remove("d-none");
+        ticket.innerHTML = `Veuillez prendre votre ticket pour le véhicule  ${inputMatriculation.value}.`
+        dissapear(ticket);
+        console.log(tabMatriculation)
+    }
+    else {
+        notExist.classList.remove("d-none");
+        notExist.innerHTML = `Le Véhicule est déjà présent`
+        dissapear(notExist);
+    }
 
 })
 
@@ -41,21 +52,30 @@ paidBtn.addEventListener('click', (event)=> {
             if(time<=15){
 
                 paid.innerHTML = `Le prix a payé pour le Véhicule ${inputMatriculation.value} est de 0.8`
+                deleteMatriculation(tabMatriculation.indexOf(inputMatriculation.value))
+                console.log(tabMatriculation)
                 
             }else if (time>15 && time <=30 ){
 
                 paid.innerHTML = `Le prix a payé pour le Véhicule ${inputMatriculation.value} est de 1.3`
+                deleteMatriculation(tabMatriculation.indexOf(inputMatriculation.value))
+                console.log(tabMatriculation)
                 
             }else if (time>30 && time <=45 ){
 
                 paid.innerHTML = `Le prix a payé pour le Véhicule ${inputMatriculation.value} est de 1.7`
+                deleteMatriculation(tabMatriculation.indexOf(inputMatriculation.value))
+                console.log(tabMatriculation)
                 
             }else {
 
                 paid.innerHTML = `Le prix a payé pour le Véhicule ${inputMatriculation.value} est de 6`
+                deleteMatriculation(tabMatriculation.indexOf(inputMatriculation.value))
+                console.log(tabMatriculation)
                 
             }
             dissapear(paid);
+            
         }
         else {
             notExist.classList.remove("d-none");
@@ -73,6 +93,11 @@ const dissapear = (alert)  => {
         alert.classList.add("d-none");
 
     },5000)
+}
+
+const deleteMatriculation = (index)  => {
+
+    tabMatriculation.splice(index,1)
 }
 
 
